@@ -127,5 +127,5 @@ src/
 
 ## 👨‍💻 Author
 
-**Ayush Gupta (Portraitwala)**
-Frontend Developer | Photographer
+**Ayush Gupta **
+Frontend Developer
