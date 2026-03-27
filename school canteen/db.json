@@ -6,7 +6,7 @@
       "class": "10th",
       "house": "Yamuna",
       "referralCode": "RAH123",
-      "totalSpent": 250
+      "totalSpent": 400
     },
     {
       "id": "2",
@@ -78,42 +78,10 @@
       "class": "12th",
       "house": "Brahmaputra",
       "referralCode": "POO159",
-      "totalSpent": 460
+      "totalSpent": 560
     },
     {
       "id": "mXHg-iILT-Y"
-    },
-    {
-      "name": "Ayush Gupta",
-      "class": "10th",
-      "house": "Ganga",
-      "referralCode": "AYU918",
-      "totalSpent": 40,
-      "id": "hcArEmIFnsM"
-    },
-    {
-      "name": "suneel",
-      "class": "10th",
-      "house": "Yamuna",
-      "referralCode": "SUN308",
-      "totalSpent": 0,
-      "id": "2P-1jVh3aHo"
-    },
-    {
-      "id": "jiE1fde0RAE",
-      "name": "saanu",
-      "class": "6th",
-      "house": "Brahmaputra",
-      "referralCode": "SAA474",
-      "totalSpent": 0
-    },
-    {
-      "id": "IjpIf339gdo",
-      "name": "as",
-      "class": "10th",
-      "house": "Ganga",
-      "referralCode": "AS582",
-      "totalSpent": 0
     }
   ],
   "snacks": [
@@ -250,12 +218,20 @@
       "id": "nm29cPVv83U"
     },
     {
-      "studentId": null,
-      "snackId": "1",
-      "quantity": 3,
-      "totalPrice": 60,
-      "date": "2026-03-27T19:23:02.984Z",
-      "id": "Vd4W3tJ3n_I"
+      "studentId": 10,
+      "snackId": "6",
+      "quantity": 1,
+      "totalPrice": 50,
+      "date": "2026-03-27T20:46:02.841Z",
+      "id": "WDrOGNGU83k"
+    },
+    {
+      "studentId": 10,
+      "snackId": "2",
+      "quantity": 1,
+      "totalPrice": 50,
+      "date": "2026-03-27T20:46:16.608Z",
+      "id": "nuLNvxkcpI0"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

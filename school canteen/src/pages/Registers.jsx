@@ -75,7 +75,7 @@ export default function Register() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-100 flex justify-center items-center p-4">
+        <div className="min-h-screen bg-linear-to-br from-orange-50 to-yellow-100 flex justify-center items-center p-4">
 
             <div className="bg-white rounded-3xl shadow-xl p-6 w-full max-w-md">
 
