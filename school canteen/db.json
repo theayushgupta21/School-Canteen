@@ -1,160 +1,190 @@
 {
-  "students": [
-    {
-      "id": "1",
-      "name": "Rahul Sharma",
-      "class": "10th",
-      "house": "Yamuna",
-      "referralCode": "RAH123",
-      "totalSpent": 250
-    },
-    {
-      "id": "2",
-      "name": "Anjali Verma",
-      "class": "12th",
-      "house": "Ganga",
-      "referralCode": "ANJ456",
-      "totalSpent": 420
-    },
-    {
-      "id": "3",
-      "name": "Aman Gupta",
-      "class": "9th",
-      "house": "Narmada",
-      "referralCode": "AMA789",
-      "totalSpent": 180
-    },
-    {
-      "id": "4",
-      "name": "Sneha Kapoor",
-      "class": "6th",
-      "house": "Brahmaputra",
-      "referralCode": "SNE321",
-      "totalSpent": 95
-    },
-    {
-      "id": "5",
-      "name": "Rohit Singh",
-      "class": "10th",
-      "house": "Ganga",
-      "referralCode": "ROH654",
-      "totalSpent": 300
-    },
-    {
-      "id": "6",
-      "name": "Priya Mehta",
-      "class": "12th",
-      "house": "Yamuna",
-      "referralCode": "PRI987",
-      "totalSpent": 510
-    },
-    {
-      "id": "7",
-      "name": "Karan Malhotra",
-      "class": "9th",
-      "house": "Brahmaputra",
-      "referralCode": "KAR741",
-      "totalSpent": 210
-    },
-    {
-      "id": "8",
-      "name": "Neha Joshi",
-      "class": "6th",
-      "house": "Narmada",
-      "referralCode": "NEH852",
-      "totalSpent": 130
-    },
-    {
-      "id": "9",
-      "name": "Vikas Yadav",
-      "class": "10th",
-      "house": "Narmada",
-      "referralCode": "VIK963",
-      "totalSpent": 275
-    },
-    {
-      "id": "10",
-      "name": "Pooja Reddy",
-      "class": "12th",
-      "house": "Brahmaputra",
-      "referralCode": "POO159",
-      "totalSpent": 460
-    },
-    {
-      "id": "mXHg-iILT-Y"
-    }
-  ],
-  "snacks": [
-    {
-      "id": "1",
-      "name": "Samosa",
-      "price": 20,
-      "ordersCount": 12
-    },
-    {
-      "id": "2",
-      "name": "Burger",
-      "price": 50,
-      "ordersCount": 8
-    },
-    {
-      "id": "3",
-      "name": "Pizza Slice",
-      "price": 80,
-      "ordersCount": 5
-    },
-    {
-      "id": "4",
-      "name": "Cold Drink",
-      "price": 30,
-      "ordersCount": 15
-    },
-    {
-      "id": "5",
-      "name": "Sandwich",
-      "price": 40,
-      "ordersCount": 7
-    }
-  ],
-  "orders": [
-    {
-      "id": "seQCb2JOdBg"
-    },
-    {
-      "id": "42JusBpj20o"
-    },
-    {
-      "studentId": 0,
-      "snackId": "1",
-      "quantity": 1,
-      "totalPrice": 20,
-      "date": "2026-03-27T14:13:55.758Z",
-      "id": "38lsBY9JUrs"
-    },
-    {
-      "studentId": 1,
-      "snackId": "1",
-      "quantity": 1,
-      "totalPrice": 20,
-      "date": "2026-03-27T14:14:06.222Z",
-      "id": "zwL83sucvXc"
-    },
-    {
-      "studentId": 1,
-      "snackId": "1",
-      "quantity": 1,
-      "totalPrice": 20,
-      "date": "2026-03-27T14:21:44.118Z",
-      "id": "WwW2n95qV8Q"
-    },
-    {
-      "studentId": 2,
-      "snackId": "1",
-      "quantity": 3,
-      "totalPrice": 60,
-      "date": "2026-03-27T14:25:50.150Z",
-      "id": "n6X3Rz7YAZ4"
-    }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+    "students": [
+        {
+            "id": "1",
+            "name": "Rahul Sharma",
+            "class": "10th",
+            "house": "Yamuna",
+            "referralCode": "RAH123",
+            "totalSpent": 250
+        },
+        {
+            "id": "2",
+            "name": "Anjali Verma",
+            "class": "12th",
+            "house": "Ganga",
+            "referralCode": "ANJ456",
+            "totalSpent": 420
+        },
+        {
+            "id": "3",
+            "name": "Aman Gupta",
+            "class": "9th",
+            "house": "Narmada",
+            "referralCode": "AMA789",
+            "totalSpent": 180
+        },
+        {
+            "id": "4",
+            "name": "Sneha Kapoor",
+            "class": "6th",
+            "house": "Brahmaputra",
+            "referralCode": "SNE321",
+            "totalSpent": 95
+        },
+        {
+            "id": "5",
+            "name": "Rohit Singh",
+            "class": "10th",
+            "house": "Ganga",
+            "referralCode": "ROH654",
+            "totalSpent": 300
+        },
+        {
+            "id": "6",
+            "name": "Priya Mehta",
+            "class": "12th",
+            "house": "Yamuna",
+            "referralCode": "PRI987",
+            "totalSpent": 510
+        },
+        {
+            "id": "7",
+            "name": "Karan Malhotra",
+            "class": "9th",
+            "house": "Brahmaputra",
+            "referralCode": "KAR741",
+            "totalSpent": 210
+        },
+        {
+            "id": "8",
+            "name": "Neha Joshi",
+            "class": "6th",
+            "house": "Narmada",
+            "referralCode": "NEH852",
+            "totalSpent": 130
+        },
+        {
+            "id": "9",
+            "name": "Vikas Yadav",
+            "class": "10th",
+            "house": "Narmada",
+            "referralCode": "VIK963",
+            "totalSpent": 275
+        },
+        {
+            "id": "10",
+            "name": "Pooja Reddy",
+            "class": "12th",
+            "house": "Brahmaputra",
+            "referralCode": "POO159",
+            "totalSpent": 460
+        },
+        {
+            "id": "mXHg-iILT-Y"
+        },
+        {
+            "name": "Ayush Gupta",
+            "class": "10th",
+            "house": "Ganga",
+            "referralCode": "AYU918",
+            "totalSpent": 40,
+            "id": "hcArEmIFnsM"
+        }
+    ],
+    "snacks": [
+        {
+            "id": "1",
+            "name": "Samosa",
+            "price": 20,
+            "ordersCount": 12
+        },
+        {
+            "id": "2",
+            "name": "Burger",
+            "price": 50,
+            "ordersCount": 8
+        },
+        {
+            "id": "3",
+            "name": "Pizza Slice",
+            "price": 80,
+            "ordersCount": 5
+        },
+        {
+            "id": "4",
+            "name": "Cold Drink",
+            "price": 30,
+            "ordersCount": 15
+        },
+        {
+            "id": "5",
+            "name": "Sandwich",
+            "price": 40,
+            "ordersCount": 7
+        },
+        {
+            "id": "6",
+            "name": "Smoothie",
+            "price": 50,
+            "ordersCount": 10
+        }
+    ],
+    "orders": [
+        {
+            "id": "seQCb2JOdBg"
+        },
+        {
+            "id": "42JusBpj20o"
+        },
+        {
+            "studentId": 0,
+            "snackId": "1",
+            "quantity": 1,
+            "totalPrice": 20,
+            "date": "2026-03-27T14:13:55.758Z",
+            "id": "38lsBY9JUrs"
+        },
+        {
+            "studentId": 1,
+            "snackId": "1",
+            "quantity": 1,
+            "totalPrice": 20,
+            "date": "2026-03-27T14:14:06.222Z",
+            "id": "zwL83sucvXc"
+        },
+        {
+            "studentId": 1,
+            "snackId": "1",
+            "quantity": 1,
+            "totalPrice": 20,
+            "date": "2026-03-27T14:21:44.118Z",
+            "id": "WwW2n95qV8Q"
+        },
+        {
+            "studentId": 2,
+            "snackId": "1",
+            "quantity": 3,
+            "totalPrice": 60,
+            "date": "2026-03-27T14:25:50.150Z",
+            "id": "n6X3Rz7YAZ4"
+        },
+        {
+            "studentId": 5,
+            "snackId": "1",
+            "quantity": 2,
+            "totalPrice": 40,
+            "date": "2026-03-27T14:59:59.742Z",
+            "id": "eXbMvWzvV-8"
+        },
+        {
+            "studentId": null,
+            "snackId": "5",
+            "quantity": 1,
+            "totalPrice": 40,
+            "date": "2026-03-27T15:19:50.326Z",
+            "id": "-PrgBPXZp4s"
+        }
+    ],
+    "$schema": "./node_modules/json-server/schema.json"
 }

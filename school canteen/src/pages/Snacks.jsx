@@ -31,7 +31,8 @@ export default function Snacks() {
         if (n.includes("donut")) return "🍩";
         if (n.includes("fries")) return "🍟";
         if (n.includes("sandwich")) return "🥪";
-        if (n.includes("smoothie")) return "🥭";
+        if (n.includes("samosa")) return "🥭";
+        if (n.includes("cold drink")) return "🥂";
         return "🍽️";
     };
 
@@ -188,8 +189,8 @@ export default function Snacks() {
                                 onClick={handleOrder}
                                 disabled={!selectedStudent || quantity < 1 || quantity > 5}
                                 className={`w-full py-2 rounded-lg text-white transition ${selectedStudent && quantity >= 1 && quantity <= 5
-                                        ? "bg-green-500 hover:bg-green-600"
-                                        : "bg-gray-400 cursor-not-allowed"
+                                    ? "bg-green-500 hover:bg-green-600"
+                                    : "bg-gray-400 cursor-not-allowed"
                                     }`}
                             >
                                 Confirm Order
