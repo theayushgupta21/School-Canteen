@@ -1,16 +1,131 @@
-# React + Vite
+# 🍔 School Canteen Management (Frontend Task)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React-based web application for managing a school canteen system.
+Users can view snacks, place orders, manage students, and track spending.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+* 🍟 View all snacks with price & order count
+* 🛒 Place orders (select student + quantity)
+* 🎓 Manage students (list + search)
+* 👤 Student details page with order history
+* ➕ Register new students with auto referral code
+* ⚡ Real-time UI updates using Zustand
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **React.js** – UI Library
+* **React Router DOM** – Routing
+* **Zustand** – State Management
+* **Tailwind CSS** – Styling
+* **Lucide React** – Icons
+* **JSON Server** – Mock API
+
+---
+
+## 📦 Installation & Setup
+
+### 1️⃣ Clone the project
+
+```bash
+git clone <your-repo-link>
+cd school-canteen
+```
+
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Install JSON Server
+
+```bash
+npm install -g json-server
+```
+
+### 4️⃣ Run Mock API
+
+```bash
+json-server --watch db.json --port 3000
+```
+
+### 5️⃣ Run React App
+
+```bash
+npm run dev
+```
+
+---
+
+## 🌐 API Endpoints (Mocked)
+
+* `GET /snacks`
+* `GET /students`
+* `GET /students/:id`
+* `POST /students`
+* `POST /orders`
+
+---
+
+## 🧠 Mock Data Approach
+
+* Used **json-server** to simulate a REST API
+* Data stored in `db.json`
+* Includes:
+
+  * Students
+  * Snacks
+  * Orders
+* Supports full CRUD operations
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+ ├── pages/
+ │   ├── Snacks.jsx
+ │   ├── Students.jsx
+ │   ├── StudentDetails.jsx
+ │   ├── Register.jsx
+ │
+ ├── store/
+ │   └── useStore.js
+ │
+ ├── api/
+ │   └── api.js
+ │
+ ├── components/
+ │   └── Navbar.jsx
+```
+
+---
+
+## 💡 Key Highlights
+
+* ⚡ Real-time state updates using Zustand
+* 🛡️ Defensive coding to prevent runtime errors
+* 📱 Fully responsive UI
+* 🎯 Clean and modular component structure
+
+---
+
+## 📌 Future Improvements
+
+* Charts & analytics dashboard
+* Authentication system
+* Backend integration (Node.js / Express)
+* Image-based snack UI
+
+---
+
+## 👨‍💻 Author
+
+**Ayush Gupta (Portraitwala)**
+Frontend Developer | Photographer
