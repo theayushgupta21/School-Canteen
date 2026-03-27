@@ -3,15 +3,12 @@ import Navbar from "./components/Navbar";
 import Snacks from "./pages/Snacks";
 import Students from "./pages/Students";
 import Register from "./pages/Registers";
-import StudentDetails from "./components/StudentDetails";
+import StudentDetails from "./pages/StudentDetails";
 
 function App() {
   return (
     <BrowserRouter>
-      {/* ✅ Navbar har page pe dikhega */}
       <Navbar />
-
-      {/* ✅ Page change hoga */}
       <Routes>
         <Route path="/" element={<Snacks />} />
         <Route path="/students" element={<Students />} />
