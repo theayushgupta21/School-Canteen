@@ -1,66 +1,102 @@
+import { updateStudent } from "../api/api";
 import { create } from "zustand";
+import {
+    getSnacks,
+    getStudents,
+    getOrders,
+    createOrderApi,
+} from "../api/api";
 
-const BASE_URL = "http://localhost:3000";
-
+// 🔥 2. STORE START
 export const useStore = create((set, get) => ({
-    // 🔥 STATE
+
+    // ✅ STATE
     snacks: [],
     students: [],
     orders: [],
     selectedSnack: null,
+    loading: false,
+    error: null,
 
     // ✅ FETCH SNACKS
     fetchSnacks: async () => {
-        const res = await fetch(`${BASE_URL}/snacks`);
-        const data = await res.json();
-        set({ snacks: data });
+        set({ loading: true, error: null });
+
+        try {
+            const data = await getSnacks(); // 🔥 api call
+            set({ snacks: data });
+        } catch (err) {
+            set({ error: err.message });
+        } finally {
+            set({ loading: false });
+        }
     },
 
     // ✅ FETCH STUDENTS
     fetchStudents: async () => {
-        const res = await fetch(`${BASE_URL}/students`);
-        const data = await res.json();
-        set({ students: data });
+        set({ loading: true, error: null });
+
+        try {
+            const data = await getStudents();
+            set({ students: data });
+        } catch (err) {
+            set({ error: err.message });
+        } finally {
+            set({ loading: false });
+        }
     },
 
-    // ✅ FETCH ORDERS (🔥 ADD THIS)
+    // ✅ FETCH ORDERS
     fetchOrders: async () => {
-        const res = await fetch(`${BASE_URL}/orders`);
-        const data = await res.json();
-        set({ orders: data });
+        set({ loading: true, error: null });
+
+        try {
+            const data = await getOrders();
+            set({ orders: data });
+        } catch (err) {
+            set({ error: err.message });
+        } finally {
+            set({ loading: false });
+        }
     },
 
     // ✅ SELECT SNACK
     setSelectedSnack: (snack) => set({ selectedSnack: snack }),
 
-    // ✅ CREATE ORDER (🔥 IMPROVED)
+    // ✅ CREATE ORDER
     createOrder: async (order) => {
-        const res = await fetch(`${BASE_URL}/orders`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(order),
-        });
+        try {
+            const newOrder = await createOrderApi(order);
 
-        const newOrder = await res.json();
+            const { students } = get();
 
-        // 🔥 UI instant update (no reload)
-        set({
-            orders: [...get().orders, newOrder],
-        });
+            const student = students.find(
+                (s) => Number(s.id) === Number(order.studentId)
+            );
 
-        // 🔥 OPTIONAL: update totalSpent of student
-        const updatedStudents = get().students.map((s) => {
-            if (s.id === order.studentId) {
-                return {
-                    ...s,
-                    totalSpent: (s.totalSpent || 0) + order.totalPrice,
-                };
-            }
-            return s;
-        });
+            const updatedTotal =
+                (student.totalSpent || 0) + order.totalPrice;
 
-        set({ students: updatedStudents });
+            // 🔥 DB UPDATE
+            await updateStudent(student.id, {
+                totalSpent: updatedTotal,
+            });
+
+            // 🔥 LOCAL UPDATE
+            const updatedStudents = students.map((s) =>
+                Number(s.id) === Number(order.studentId)
+                    ? { ...s, totalSpent: updatedTotal }
+                    : s
+            );
+
+            set({
+                orders: [...get().orders, newOrder],
+                students: updatedStudents,
+            });
+
+        } catch (err) {
+            set({ error: err.message });
+            throw err;
+        }
     },
 }));

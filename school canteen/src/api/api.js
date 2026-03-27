@@ -1,69 +1,100 @@
 const BASE_URL = "http://localhost:3000";
 
-// 🔥 common error handler
+// 🔥 Common handler
 const handleResponse = async (res) => {
     if (!res.ok) {
-        throw new Error(`API Error: ${res.status}`);
+        throw new Error("Something went wrong ❌");
     }
     return res.json();
 };
 
-// ✅ GET snacks
+// ✅ GET SNACKS
 export const getSnacks = async () => {
-    const res = await fetch(`${BASE_URL}/snacks`);
-    return handleResponse(res);
+    try {
+        const res = await fetch(`${BASE_URL}/snacks`);
+        return await handleResponse(res);
+    } catch (err) {
+        throw new Error("Failed to fetch snacks");
+    }
 };
 
-// ✅ GET students
+// ✅ GET STUDENTS
 export const getStudents = async () => {
-    const res = await fetch(`${BASE_URL}/students`);
-    return handleResponse(res);
+    try {
+        const res = await fetch(`${BASE_URL}/students`);
+        return await handleResponse(res);
+    } catch (err) {
+        throw new Error("Failed to fetch students");
+    }
 };
 
-// ✅ GET student by ID
+// ✅ GET STUDENT BY ID
 export const getStudentById = async (id) => {
-    if (!id) throw new Error("Student ID is required");
-
-    const res = await fetch(`${BASE_URL}/students/${id}`);
-    return handleResponse(res);
+    try {
+        const res = await fetch(`${BASE_URL}/students/${id}`);
+        return await handleResponse(res);
+    } catch (err) {
+        throw new Error("Failed to fetch student");
+    }
 };
 
-// ✅ ADD student
+// ✅ ADD STUDENT
 export const addStudent = async (student) => {
-    // 🔥 validation
-    if (!student.name || !student.class) {
-        throw new Error("Name and Class are required");
+    try {
+        const res = await fetch(`${BASE_URL}/students`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(student),
+        });
+
+        return await handleResponse(res);
+    } catch (err) {
+        throw new Error("Failed to add student");
     }
-
-    const res = await fetch(`${BASE_URL}/students`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(student),
-    });
-
-    return handleResponse(res);
 };
 
-// ✅ CREATE order
-export const createOrder = async (order) => {
-    // 🔥 validation
-    if (!order.studentId || !order.snackId) {
-        throw new Error("Student & Snack required");
+// ✅ CREATE ORDER
+export const createOrderApi = async (order) => {
+    try {
+        const res = await fetch(`${BASE_URL}/orders`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(order),
+        });
+
+        return await handleResponse(res);
+    } catch (err) {
+        throw new Error("Failed to create order");
     }
+};
 
-    if (order.quantity < 1 || order.quantity > 5) {
-        throw new Error("Quantity must be between 1-5");
+// ✅ GET ORDERS
+export const getOrders = async () => {
+    try {
+        const res = await fetch(`${BASE_URL}/orders`);
+        return await handleResponse(res);
+    } catch (err) {
+        throw new Error("Failed to fetch orders");
     }
+};
+export const updateStudent = async (id, updatedData) => {
+    try {
+        const res = await fetch(`http://localhost:3000/students/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatedData),
+        });
 
-    const res = await fetch(`${BASE_URL}/orders`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(order),
-    });
+        if (!res.ok) throw new Error("Failed to update student");
 
-    return handleResponse(res);
+        return await res.json();
+    } catch (err) {
+        throw err;
+    }
 };

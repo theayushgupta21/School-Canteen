@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { useStore } from "../store/useStore";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import {
+    ArrowLeft,
+    User,
+    School,
+    Home,
+    Hash,
+    Sparkles,
+} from "lucide-react";
 
 export default function Register() {
     const navigate = useNavigate();
@@ -13,9 +20,16 @@ export default function Register() {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
+    // 🔥 Auto ID generator
+    const generateId = () => {
+        if (!students.length) return "1";
+        const maxId = Math.max(...students.map((s) => Number(s.id)));
+        return String(maxId + 1);
+    };
+
     // 🔥 Referral Code Generator
     const generateReferral = (name) => {
-        const prefix = name.slice(0, 3).toUpperCase();
+        const prefix = (name || "STD").slice(0, 3).toUpperCase();
         const random = Math.floor(100 + Math.random() * 900);
         return `${prefix}${random}`;
     };
@@ -32,6 +46,7 @@ export default function Register() {
         setLoading(true);
 
         const newStudent = {
+            id: generateId(), // ✅ integer (1,2,3...)
             name,
             class: studentClass,
             house,
@@ -48,35 +63,38 @@ export default function Register() {
                 body: JSON.stringify(newStudent),
             });
 
-            await fetchStudents(); // 🔥 refresh list
+            await fetchStudents();
 
-            alert("✅ Student Registered!");
+            alert("✅ Student Registered Successfully!");
             navigate("/students");
         } catch (err) {
-            setError("Something went wrong ❌");
+            setError("❌ Something went wrong");
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <div className="p-4 md:p-6 bg-gray-50 min-h-screen flex justify-center items-center">
+        <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-100 flex justify-center items-center p-4">
 
-            <div className="bg-white rounded-2xl shadow-lg p-6 w-full max-w-md">
+            <div className="bg-white rounded-3xl shadow-xl p-6 w-full max-w-md">
 
                 {/* 🔙 Back */}
                 <button
                     onClick={() => navigate("/students")}
-                    className="flex items-center gap-2 text-gray-600 mb-4 hover:text-black"
+                    className="flex items-center gap-2 text-gray-500 mb-4 hover:text-black"
                 >
                     <ArrowLeft size={18} />
-                    Back to Students
+                    Back
                 </button>
 
                 {/* 🔥 Title */}
-                <h1 className="text-2xl font-bold mb-4">
-                    Register <span className="text-orange-500">Student 🎓</span>
+                <h1 className="text-2xl font-bold mb-1">
+                    🍔 Cafeteria Registration
                 </h1>
+                <p className="text-gray-500 text-sm mb-4">
+                    Add a new student to snack system
+                </p>
 
                 {/* ❌ Error */}
                 {error && (
@@ -88,7 +106,9 @@ export default function Register() {
 
                     {/* Name */}
                     <div>
-                        <label className="text-sm font-medium">Full Name</label>
+                        <label className="text-sm font-medium flex items-center gap-2">
+                            <User size={16} /> Full Name
+                        </label>
                         <input
                             type="text"
                             placeholder="Enter student name"
@@ -97,17 +117,19 @@ export default function Register() {
                                 setName(e.target.value);
                                 setError("");
                             }}
-                            className="border w-full p-2 rounded-lg mt-1 focus:outline-orange-400"
+                            className="border w-full p-2 rounded-xl mt-1 focus:outline-orange-400"
                         />
                     </div>
 
                     {/* Class */}
                     <div>
-                        <label className="text-sm font-medium">Class</label>
+                        <label className="text-sm font-medium flex items-center gap-2">
+                            <School size={16} /> Class
+                        </label>
                         <select
                             value={studentClass}
                             onChange={(e) => setStudentClass(e.target.value)}
-                            className="border w-full p-2 rounded-lg mt-1"
+                            className="border w-full p-2 rounded-xl mt-1"
                         >
                             <option>6th</option>
                             <option>9th</option>
@@ -118,11 +140,13 @@ export default function Register() {
 
                     {/* House */}
                     <div>
-                        <label className="text-sm font-medium">House</label>
+                        <label className="text-sm font-medium flex items-center gap-2">
+                            <Home size={16} /> House
+                        </label>
                         <select
                             value={house}
                             onChange={(e) => setHouse(e.target.value)}
-                            className="border w-full p-2 rounded-lg mt-1"
+                            className="border w-full p-2 rounded-xl mt-1"
                         >
                             <option>Ganga</option>
                             <option>Yamuna</option>
@@ -131,21 +155,29 @@ export default function Register() {
                         </select>
                     </div>
 
-                    {/* Referral Preview */}
-                    <div className="bg-gray-100 p-3 rounded-lg text-sm">
-                        Referral Code:{" "}
-                        <span className="font-bold text-orange-500">
-                            {name ? generateReferral(name) : "AUTO-GENERATED"}
-                        </span>
+                    {/* Preview Box */}
+                    <div className="bg-orange-50 border rounded-xl p-3 text-sm space-y-1">
+
+                        <p className="flex items-center gap-2">
+                            <Hash size={14} /> ID:{" "}
+                            <span className="font-bold">{generateId()}</span>
+                        </p>
+
+                        <p className="flex items-center gap-2">
+                            <Sparkles size={14} /> Referral:{" "}
+                            <span className="font-bold text-orange-500">
+                                {name ? generateReferral(name) : "AUTO"}
+                            </span>
+                        </p>
                     </div>
 
                     {/* Submit */}
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-lg transition"
+                        className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-xl transition shadow"
                     >
-                        {loading ? "Registering..." : "Register Student"}
+                        {loading ? "Registering..." : "Register Student 🚀"}
                     </button>
                 </form>
             </div>

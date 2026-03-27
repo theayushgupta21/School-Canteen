@@ -3,10 +3,12 @@ import { useStore } from "../store/useStore";
 import { Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
+
 export default function Students() {
-    const { students, fetchStudents } = useStore();
+    const { students, fetchStudents, loading, error } = useStore();
     const [search, setSearch] = useState("");
     const navigate = useNavigate();
+
 
     useEffect(() => {
         fetchStudents();
@@ -27,6 +29,23 @@ export default function Students() {
             .join("")
             .toUpperCase();
     };
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <p className="text-gray-500 animate-pulse">
+                    Loading students... ⏳
+                </p>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <p className="text-red-500">{error}</p>
+            </div>
+        );
+    }
 
     return (
         <div className="p-4 md:p-6 bg-gray-50 min-h-screen">
