@@ -14,7 +14,7 @@
       "class": "12th",
       "house": "Ganga",
       "referralCode": "ANJ456",
-      "totalSpent": 420
+      "totalSpent": 440
     },
     {
       "id": "3",
@@ -232,6 +232,14 @@
       "totalPrice": 50,
       "date": "2026-03-27T20:46:16.608Z",
       "id": "nuLNvxkcpI0"
+    },
+    {
+      "studentId": 2,
+      "snackId": "1",
+      "quantity": 1,
+      "totalPrice": 20,
+      "date": "2026-03-28T06:09:29.286Z",
+      "id": "4OhOTybZyvU"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
