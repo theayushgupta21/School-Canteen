@@ -22,9 +22,14 @@ export const getSnacks = async () => {
 export const getStudents = async () => {
     try {
         const res = await fetch(`${BASE_URL}/students`);
+        // Use your handleResponse function
         return await handleResponse(res);
     } catch (err) {
-        throw new Error("Failed to fetch students");
+        // err is usually a TypeError when fetch fails (network/server)
+        // We can add a pseudo-status code 0 to indicate network failure
+        const networkError = new Error(err.message || "Failed to fetch students");
+        networkError.status = 0; // 0 = network/server unreachable
+        throw networkError;
     }
 };
 
